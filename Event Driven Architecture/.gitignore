@@ -1,3 +1,4 @@
 env
 init-scripts
 postgres_data
+__pycache__
