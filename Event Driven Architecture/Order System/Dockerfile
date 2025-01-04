@@ -6,5 +6,4 @@ EXPOSE 8000
 COPY requirements.txt /code/
 RUN pip install -r requirements.txt
 COPY . .
-
 CMD ["fastapi", "run", "Order Service/main.py", "--port", "8000","--reload"]

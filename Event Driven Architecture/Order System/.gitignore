@@ -1,0 +1,4 @@
+env
+.ropeproject
+init-scripts
+__pycache__

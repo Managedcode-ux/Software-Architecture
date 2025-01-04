@@ -29,7 +29,7 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=postgres
     ports:
-      - '5432:5432'
+      - "5432:5432"
     healthcheck:
       # test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
       interval: 1s
@@ -40,12 +40,12 @@ services:
       - ./init-scripts:/docker-entrypoint-initdb.d
     networks:
       - backend-network
-  
+
   kafka:
     image: apache/kafka:3.9.0
     ports:
       - "29092:29092"
-    
+
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_NODE_ID: 1
@@ -54,9 +54,9 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,BROKER:PLAINTEXT,PLAINTEXT:PLAINTEXT
       KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka:9093
       KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
-      KAFKA_PROCESS_ROLES: 'broker,controller'
+      KAFKA_PROCESS_ROLES: "broker,controller"
       KAFKA_INTER_BROKER_LISTENER_NAME: BROKER
-      CLUSTER_ID: 'WhateverClusterID'
+      CLUSTER_ID: "WhateverClusterID"
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
@@ -75,7 +75,5 @@ volumes:
 networks:
   kafka-network:
     driver: bridge
-  backend-network:    # Add this network definition
+  backend-network: # Add this network definition
     driver: bridge
-
-  
